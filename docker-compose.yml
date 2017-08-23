@@ -1,0 +1,36 @@
+version: "2"
+services:
+  notebook0:
+    build: .
+    ports:
+      - "9001:8888"
+      - "6007:6006"
+    devices:
+      - /dev/nvidia0
+    volumes:
+      - ./data:/data
+      - ./notebooks:/notebooks
+      - ./logs0:/logs
+  notebook1:
+    build: .
+    ports:
+      - "9002:8888"
+      - "6008:6006"
+    devices:
+      - /dev/nvidia1
+    volumes:
+      - ./data:/data
+      - ./notebooks:/notebooks
+      - ./logs1:/logs
+  notebook-multi:
+    build: .
+    ports:
+      - "9000:8888"
+      - "6006:6006"
+    devices:
+      - /dev/nvidia0
+      - /dev/nvidia1
+    volumes:
+      - ./data:/data
+      - ./notebooks:/notebooks
+      - ./logs-multi:/logs
