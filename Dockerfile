@@ -29,10 +29,6 @@ USER keras
 # Python
 ARG python_version=3.5
 
-COPY cntk-2.1-cp35-cp35m-linux_x86_64.whl /src
-
-COPY tensorflow_gpu-1.3.0-cp35-cp35m-manylinux1_x86_64.whl /src
-
 RUN conda install -y python=${python_version} && \
     pip install --upgrade pip && \
     pip install https://cntk.ai/PythonWheel/GPU/cntk-2.1-cp35-cp35m-linux_x86_64.whl && \
